@@ -1,5 +1,7 @@
 # ember-cli-jss [![Build Status][buildstat-image]][buildstat-url]
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/exeto/ember-cli-jss.svg)](https://greenkeeper.io/)
+
 > JSS integration for Ember
 
 ## Install
