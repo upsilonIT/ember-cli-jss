@@ -9,6 +9,7 @@ const {
 } = Ember;
 
 const EMPTY_ARRAY = Object.freeze([]);
+const EMPTY_OBJECT = Object.freeze({});
 
 // Imitation private properties
 const PREFIX = `JSS-${Date.now()}`;
@@ -20,7 +21,7 @@ const createBindings = (context) => {
     .map((items) => items.split(':')[0]);
 
   mixin(context, {
-    [CLASS_NAME_BINDINGS]: computed(...observedProperties, () => {
+    [CLASS_NAME_BINDINGS]: computed('classes', ...observedProperties, () => {
       const classes = context.get('classes');
 
       return context.jssNameBindings
@@ -44,17 +45,14 @@ export default Mixin.create({
   jssNames: EMPTY_ARRAY,
   jssNameBindings: EMPTY_ARRAY,
   jssObservedProps: EMPTY_ARRAY,
+  classes: EMPTY_OBJECT,
 
   classNameBindings: [
     CLASS_NAMES,
     CLASS_NAME_BINDINGS,
   ],
 
-  classes: computed(function() {
-    return this.get('stylesheet.sheet.classes');
-  }).readOnly(),
-
-  [CLASS_NAMES]: computed('jssNames.[]', function() {
+  [CLASS_NAMES]: computed('classes', 'jssNames.[]', function() {
     return this.jssNames
       .map((name) => this.get(`classes.${name}`))
       .join(' ');
@@ -93,6 +91,7 @@ export default Mixin.create({
     const id = this.elementId;
 
     this.stylesheet.attach(id, componentName);
+    this.set('classes', this.stylesheet.sheet.classes);
 
     const sheet = this.stylesheet.dynamicSheets[id];
     const fields = this.get('jssObservedProps') || [];
