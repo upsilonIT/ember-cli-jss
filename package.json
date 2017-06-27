@@ -23,7 +23,8 @@
     "css-in-js"
   ],
   "dependencies": {
-    "ember-browserify": "^1.1.13",
+    "broccoli-merge-trees": "^2.0.0",
+    "broccoli-webpack": "^1.0.0",
     "ember-cli-babel": "^6.4.1",
     "jss": "^8.0.0",
     "jss-preset-default": "^3.0.0"

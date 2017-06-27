@@ -5,8 +5,7 @@
 ## Install
 
 ```bash
-$ npm install --save-dev ember-browserify
-$ npm install --save ember-cli-jss jss jss-preset-default
+$ npm install --save ember-cli-jss
 ```
 
 ## Usage
@@ -94,10 +93,10 @@ You can override the `app/initializers/ember-cli-jss.js`. Use `setup`, it takes 
 // ...app/initializers/ember-cli-jss.js
 
 import { setup } from 'ember-cli-jss';
-import compose from 'npm:jss-compose';
+import preset from 'jss-preset-default';
 
 export function initialize() {
-  setup(compose.default());
+  setup(preset());
 }
 
 export default {

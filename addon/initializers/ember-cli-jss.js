@@ -1,8 +1,8 @@
 import { setup } from 'ember-cli-jss';
-import preset from 'npm:jss-preset-default';
+import preset from 'jss-preset-default';
 
 export function initialize() {
-  setup(preset.default());
+  setup(preset());
 }
 
 export default {

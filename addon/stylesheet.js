@@ -1,10 +1,12 @@
 import Ember from 'ember';
-import jss from 'npm:jss';
+import { getDynamicStyles } from 'jss';
 import compose from './compose';
 import { jssInstance } from './setup';
 
-const { copy, merge } = Ember;
-const { getDynamicStyles } = jss;
+const {
+  copy,
+  merge,
+} = Ember;
 
 const isEmpty = (obj = {}) => !Object.keys(obj).length;
 

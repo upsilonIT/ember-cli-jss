@@ -1,6 +1,6 @@
-import jss from 'npm:jss';
+import { create } from 'jss';
 
-export const jssInstance = jss.create();
+export const jssInstance = create();
 
 export default (options = {}) => {
   jssInstance.setup(options);
