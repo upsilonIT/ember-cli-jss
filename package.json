@@ -24,7 +24,7 @@
   ],
   "dependencies": {
     "broccoli-merge-trees": "^2.0.0",
-    "broccoli-webpack": "^1.0.0",
+    "broccoli-webpack": "exeto/broccoli-webpack#b37f69983eb31727097601c310e3ddf4e46e8941",
     "ember-cli-babel": "^6.4.1",
     "jss": "^8.0.0",
     "jss-preset-default": "^3.0.0"
