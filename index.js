@@ -3,8 +3,12 @@
 'use strict';
 
 const path = require('path');
+const Funnel = require('broccoli-funnel');
 const MergeTrees = require('broccoli-merge-trees');
-const WebpackWriter = require('broccoli-webpack');
+const Rollup = require('broccoli-rollup');
+const resolve = require('rollup-plugin-node-resolve');
+const commonjs = require('rollup-plugin-commonjs');
+const replace = require('rollup-plugin-replace');
 const HtmlbarsPlugin = require('./lib/htmlbars-plugin');
 
 module.exports = {
@@ -19,16 +23,24 @@ module.exports = {
 
   treeForVendor(tree) {
     const trees = ['jss', 'jss-preset-default'].map((item) => {
-      const modulePath = path.dirname(require.resolve(`${item}/dist/${item}.js`));
+      const itemPath = path.dirname(require.resolve(`${item}/lib/index.js`));
+      const itemTree = new Funnel(itemPath);
 
-      return new WebpackWriter([modulePath], {
-        entry: `./${item}.js`,
-
-        output: {
-          filename: `${item}.amd.js`,
-          library: item,
-          libraryTarget: 'amd',
-        }
+      return new Rollup(itemTree, {
+        rollup: {
+          entry: `./index.js`,
+          dest: `${item}.amd.js`,
+          format: 'amd',
+          moduleId: item,
+          exports: 'named',
+          plugins: [
+            resolve(),
+            commonjs(),
+            replace({
+              'process.env.NODE_ENV': JSON.stringify(this.app.env),
+            }),
+          ],
+        },
       });
     });
 
