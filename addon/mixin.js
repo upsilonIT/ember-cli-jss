@@ -8,9 +8,6 @@ const {
   computed,
 } = Ember;
 
-const EMPTY_ARRAY = Object.freeze([]);
-const EMPTY_OBJECT = Object.freeze({});
-
 // Imitation private properties
 const PREFIX = `JSS-${Date.now()}`;
 const CLASS_NAMES = `${PREFIX}-classNames`;
@@ -42,10 +39,10 @@ const createBindings = (context) => {
 };
 
 export default Mixin.create({
-  jssNames: EMPTY_ARRAY,
-  jssNameBindings: EMPTY_ARRAY,
-  jssObservedProps: EMPTY_ARRAY,
-  classes: EMPTY_OBJECT,
+  jssNames: [],
+  jssNameBindings: [],
+  jssObservedProps: [],
+  classes: {},
 
   classNameBindings: [
     CLASS_NAMES,
