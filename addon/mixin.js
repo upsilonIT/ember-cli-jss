@@ -6,6 +6,7 @@ const {
   mixin,
   assert,
   computed,
+  Object: EmObject,
 } = Ember;
 
 // Imitation private properties
@@ -88,11 +89,13 @@ export default Mixin.create({
     const id = this.elementId;
 
     this.stylesheet.attach(id, componentName);
-    this.set('classes', this.stylesheet.sheet.classes);
 
+    const classes = EmObject.create(this.stylesheet.sheet.classes);
     const sheet = this.stylesheet.dynamicSheets[id];
     const fields = this.get('jssObservedProps') || [];
     const update = () => sheet.update(this.getProperties(fields));
+
+    this.set('classes', classes);
 
     update();
 
@@ -103,5 +106,5 @@ export default Mixin.create({
     this._super(...arguments);
 
     this.stylesheet.detach(this.elementId);
-  }
+  },
 });
