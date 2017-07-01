@@ -79,7 +79,7 @@ export default Mixin.create({
     );
   },
 
-  willInsertElement() {
+  willRender() {
     this._super(...arguments);
 
     createBindings(this);
