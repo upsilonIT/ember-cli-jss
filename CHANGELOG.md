@@ -1,3 +1,7 @@
+0.3.1 / 2017-07-04
+==================
+- Fix attach static sheet
+
 0.3.0 / 2017-07-01
 ==================
 - Replaced webpack to rollup
