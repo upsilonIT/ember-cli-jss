@@ -18,7 +18,11 @@ export default class StyleSheet {
     this.options = options || {};
   }
 
-  createStaticSheetAndAttach(name) {
+  createStaticSheet(name) {
+    if (this.staticSheet) {
+      return;
+    }
+
     const options = copy(this.options);
 
     if (!options.meta) {
@@ -29,11 +33,11 @@ export default class StyleSheet {
       this.styles,
       options
     );
+  }
 
-    if (!isEmpty(this.staticSheet.classes)) {
-      this.staticSheet.attach();
-      this.refs++;
-    }
+  attachStaticSheet() {
+    this.staticSheet.attach();
+    this.refs++;
   }
 
   createDynamicSheetAndAttach(id, name) {
@@ -84,8 +88,10 @@ export default class StyleSheet {
   }
 
   attach(id, name) {
-    if (!this.staticSheet) {
-      this.createStaticSheetAndAttach(name);
+    this.createStaticSheet(name);
+
+    if (!isEmpty(this.staticSheet.classes)) {
+      this.attachStaticSheet();
     }
 
     this.createDynamicSheetAndAttach(id, name);
