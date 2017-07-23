@@ -13,6 +13,7 @@ const {
 const PREFIX = `JSS-${Date.now()}`;
 const CLASS_NAMES = `${PREFIX}-classNames`;
 const CLASS_NAME_BINDINGS = `${PREFIX}-classNameBindings`;
+const SETUP = `${PREFIX}-setup`;
 
 const createBindings = (context) => {
   const observedProperties = context.jssNameBindings
@@ -78,11 +79,11 @@ export default Mixin.create({
       'Only arrays are allowed for "jssNameBindings"',
       Array.isArray(this.jssNameBindings)
     );
+
+    this[SETUP]();
   },
 
-  willInsertElement() {
-    this._super(...arguments);
-
+  [SETUP]() {
     createBindings(this);
 
     const componentName = String(this).match(/:(.+?):/)[1];
