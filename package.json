@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-jss",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "JSS integration for Ember",
   "repository": "exeto/ember-cli-jss",
   "author": "Timofey Dergachev <t@exeto.me> (https://exeto.me/)",
