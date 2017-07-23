@@ -80,7 +80,7 @@ export default Mixin.create({
     );
   },
 
-  willRender() {
+  willInsertElement() {
     this._super(...arguments);
 
     createBindings(this);
