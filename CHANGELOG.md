@@ -1,3 +1,8 @@
+0.4.0 / 2017-07-25
+==================
+- Add eslint config
+- Fix app env when use in addon
+
 0.3.3 / 2017-07-23
 ==================
 - Move setup to init hook
