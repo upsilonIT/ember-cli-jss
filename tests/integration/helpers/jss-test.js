@@ -2,10 +2,10 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('jss', 'Integration | Helper | jss', {
-  integration: true
+  integration: true,
 });
 
-test('it should insert class names', function(assert) {
+test('it should insert class names', function (assert) {
   this.set('classes', {
     lorem: 'ipsum',
     dolor: 'sit',

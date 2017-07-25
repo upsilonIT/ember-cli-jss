@@ -1,7 +1,5 @@
 /* eslint-env node */
 
-'use strict';
-
 const path = require('path');
 const Funnel = require('broccoli-funnel');
 const MergeTrees = require('broccoli-merge-trees');
@@ -14,8 +12,8 @@ const HtmlbarsPlugin = require('./lib/htmlbars-plugin');
 module.exports = {
   name: 'ember-cli-jss',
 
-  included() {
-    this._super.included(...arguments);
+  included(...args) {
+    this._super.included(...args);
 
     this.import('vendor/jss.amd.js');
     this.import('vendor/jss-preset-default.amd.js');
@@ -28,7 +26,7 @@ module.exports = {
 
       return new Rollup(itemTree, {
         rollup: {
-          entry: `./index.js`,
+          entry: './index.js',
           dest: `${item}.amd.js`,
           format: 'amd',
           moduleId: item,
@@ -53,7 +51,7 @@ module.exports = {
     });
   },
 
-  setupPreprocessorRegistry: function(type, registry) {
+  setupPreprocessorRegistry(type, registry) {
     if (type !== 'parent') { return; }
 
     registry.add('htmlbars-ast-plugin', {

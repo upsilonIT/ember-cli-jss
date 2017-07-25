@@ -37,7 +37,7 @@ export default class StyleSheet {
 
   attachStaticSheet() {
     this.staticSheet.attach();
-    this.refs++;
+    this.refs = this.refs + 1;
   }
 
   createDynamicSheetAndAttach(id, name) {
@@ -67,7 +67,7 @@ export default class StyleSheet {
   }
 
   detachStaticSheet() {
-    this.refs--;
+    this.refs = this.refs - 1;
 
     if (this.refs === 0) {
       this.staticSheet.detach();

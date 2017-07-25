@@ -1,3 +1,5 @@
+/* eslint-disable guard-for-in, no-restricted-syntax */
+
 import Ember from 'ember';
 
 const { merge } = Ember;
@@ -18,10 +20,10 @@ export default (staticSheet, styles) => {
       const className = styles[name];
 
       if (!className) {
-        styles[name] = { composes: staticSheet.classes[name] }
+        styles[name] = { composes: staticSheet.classes[name] };
       }
     }
   }
 
-  return styles
-}
+  return styles;
+};

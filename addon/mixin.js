@@ -17,7 +17,7 @@ const SETUP = `${PREFIX}-setup`;
 
 const createBindings = (context) => {
   const observedProperties = context.jssNameBindings
-    .map((items) => items.split(':')[0]);
+    .map(items => items.split(':')[0]);
 
   mixin(context, {
     [CLASS_NAME_BINDINGS]: computed('classes', ...observedProperties, () => {
@@ -51,14 +51,14 @@ export default Mixin.create({
     CLASS_NAME_BINDINGS,
   ],
 
-  [CLASS_NAMES]: computed('classes', 'jssNames.[]', function() {
+  [CLASS_NAMES]: computed('classes', 'jssNames.[]', function () {
     return this.jssNames
-      .map((name) => this.get(`classes.${name}`))
+      .map(name => this.get(`classes.${name}`))
       .join(' ');
   }).readOnly(),
 
-  init() {
-    this._super(...arguments);
+  init(...args) {
+    this._super(...args);
 
     assert(
       'Only instance of StyleSheet allowed for "stylesheet"',
@@ -100,11 +100,11 @@ export default Mixin.create({
 
     update();
 
-    fields.forEach((field) => this.addObserver(field, this, update));
+    fields.forEach(field => this.addObserver(field, this, update));
   },
 
-  willDestroyElement() {
-    this._super(...arguments);
+  willDestroyElement(...args) {
+    this._super(...args);
 
     this.stylesheet.detach(this.elementId);
   },
