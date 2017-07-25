@@ -23,6 +23,7 @@ module.exports = {
     const trees = ['jss', 'jss-preset-default'].map((item) => {
       const itemPath = path.dirname(require.resolve(`${item}/lib/index.js`));
       const itemTree = new Funnel(itemPath);
+      const { env } = (this.app || this.parent.app);
 
       return new Rollup(itemTree, {
         rollup: {
@@ -35,7 +36,7 @@ module.exports = {
             resolve(),
             commonjs(),
             replace({
-              'process.env.NODE_ENV': JSON.stringify(this.app.env),
+              'process.env.NODE_ENV': JSON.stringify(env),
             }),
           ],
         },
