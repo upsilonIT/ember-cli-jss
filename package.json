@@ -23,7 +23,7 @@
     "css-in-js"
   ],
   "dependencies": {
-    "broccoli-funnel": "^1.2.0",
+    "broccoli-funnel": "^2.0.0",
     "broccoli-merge-trees": "^2.0.0",
     "broccoli-rollup": "^1.3.0",
     "ember-cli-babel": "^6.4.1",
