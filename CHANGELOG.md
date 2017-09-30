@@ -1,3 +1,8 @@
+0.5.0 / 2017-10-01
+==================
+- Update jss to version 9.0.0
+- Update jss-preset-default to version 4.0.0
+
 0.4.0 / 2017-07-25
 ==================
 - Add eslint config
