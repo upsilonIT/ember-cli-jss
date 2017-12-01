@@ -27,10 +27,12 @@ module.exports = {
 
       return new Rollup(itemTree, {
         rollup: {
-          entry: './index.js',
-          dest: `${item}.amd.js`,
-          format: 'amd',
-          moduleId: item,
+          input: './index.js',
+          output: {
+            file: `${item}.amd.js`,
+            format: 'amd',
+            name: item,
+          },
           exports: 'named',
           plugins: [
             resolve(),
