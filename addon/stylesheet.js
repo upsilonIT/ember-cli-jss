@@ -1,12 +1,8 @@
-import Ember from 'ember';
+import { copy } from '@ember/object/internals';
+import { merge } from '@ember/polyfills';
 import { getDynamicStyles } from 'jss';
 import compose from './compose';
 import { jssInstance } from './setup';
-
-const {
-  copy,
-  merge,
-} = Ember;
 
 const isEmpty = (obj = {}) => !Object.keys(obj).length;
 

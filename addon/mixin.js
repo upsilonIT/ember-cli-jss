@@ -1,12 +1,11 @@
+import Mixin from '@ember/object/mixin';
+import { assert } from '@ember/debug';
+import EmObject, { computed } from '@ember/object';
 import Ember from 'ember';
 import StyleSheet from './stylesheet';
 
 const {
-  Mixin,
-  mixin,
-  assert,
-  computed,
-  Object: EmObject,
+  mixin
 } = Ember;
 
 // Imitation private properties

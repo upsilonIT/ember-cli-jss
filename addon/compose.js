@@ -1,8 +1,6 @@
 /* eslint-disable guard-for-in, no-restricted-syntax */
 
-import Ember from 'ember';
-
-const { merge } = Ember;
+import { merge } from '@ember/polyfills';
 
 export default (staticSheet, styles) => {
   for (const name in styles) {
