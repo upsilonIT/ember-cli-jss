@@ -1,12 +1,8 @@
+import Ember from 'ember';
 import Mixin from '@ember/object/mixin';
 import { assert } from '@ember/debug';
 import EmObject, { computed } from '@ember/object';
-import Ember from 'ember';
 import StyleSheet from './stylesheet';
-
-const {
-  mixin
-} = Ember;
 
 // Imitation private properties
 const PREFIX = `JSS-${Date.now()}`;
@@ -18,7 +14,7 @@ const createBindings = (context) => {
   const observedProperties = context.jssNameBindings
     .map(items => items.split(':')[0]);
 
-  mixin(context, {
+  Ember.mixin(context, {
     [CLASS_NAME_BINDINGS]: computed('classes', ...observedProperties, () => {
       const classes = context.get('classes');
 
