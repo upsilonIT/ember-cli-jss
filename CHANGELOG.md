@@ -1,3 +1,9 @@
+0.6.0 / 2017-12-14
+==================
+- Freeze version 9.3.3 for jss
+- Freeze version 4.0.1 for jss-preset-default
+- Migrate to new modules
+
 0.5.0 / 2017-10-01
 ==================
 - Update jss to version 9.0.0
