@@ -34,7 +34,7 @@
     "rollup-plugin-replace": "^2.0.0"
   },
   "devDependencies": {
-    "@exeto/eslint-config": "^0.2.0",
+    "@exeto/eslint-config": "^1.0.0",
     "broccoli-asset-rev": "^2.4.5",
     "ember-ajax": "^3.0.0",
     "ember-cli": "3.0.0",
