@@ -2,13 +2,13 @@ import Ember from 'ember';
 import Mixin from '@ember/object/mixin';
 import { assert } from '@ember/debug';
 import EmObject, { computed } from '@ember/object';
-import StyleSheet from './stylesheet';
 
-// Imitation private properties
-const PREFIX = `JSS-${Date.now()}`;
-const CLASS_NAMES = `${PREFIX}-classNames`;
-const CLASS_NAME_BINDINGS = `${PREFIX}-classNameBindings`;
-const SETUP = `${PREFIX}-setup`;
+import StyleSheet from './stylesheet';
+import { uniqKey } from './utils';
+
+const classNamesKey = uniqKey('classNames');
+const classNameBindingsKey = uniqKey('classNameBindings');
+const setupKey = uniqKey('setup');
 
 const createBindings = context => {
   const observedProperties = context.jssNameBindings.map(
@@ -16,7 +16,7 @@ const createBindings = context => {
   );
 
   Ember.mixin(context, {
-    [CLASS_NAME_BINDINGS]: computed('classes', ...observedProperties, () => {
+    [classNameBindingsKey]: computed('classes', ...observedProperties, () => {
       const classes = context.get('classes');
 
       return context.jssNameBindings
@@ -40,9 +40,9 @@ export default Mixin.create({
   jssObservedProps: [],
   classes: {},
 
-  classNameBindings: [CLASS_NAMES, CLASS_NAME_BINDINGS],
+  classNameBindings: [classNamesKey, classNameBindingsKey],
 
-  [CLASS_NAMES]: computed('classes', 'jssNames.[]', function() {
+  [classNamesKey]: computed('classes', 'jssNames.[]', function() {
     return this.jssNames.map(name => this.get(`classes.${name}`)).join(' ');
   }).readOnly(),
 
@@ -69,10 +69,10 @@ export default Mixin.create({
       Array.isArray(this.jssNameBindings),
     );
 
-    this[SETUP]();
+    this[setupKey]();
   },
 
-  [SETUP]() {
+  [setupKey]() {
     createBindings(this);
 
     const componentName = String(this).match(/:(.+?):/)[1];
@@ -94,7 +94,6 @@ export default Mixin.create({
 
   willDestroyElement(...args) {
     this._super(...args);
-
     this.stylesheet.detach(this.elementId);
   },
 });

@@ -3,7 +3,8 @@
   "extends": ["plugin:ember/recommended", "@exeto", "prettier"],
   "plugins": ["ember", "prettier"],
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "ember/avoid-leaking-state-in-ember-objects": "off"
   },
   "overrides": [
     {

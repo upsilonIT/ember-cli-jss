@@ -58,7 +58,7 @@ export default new StyleSheet({
   },
 
   content: {
-    color: data => data.color;
+    color: data => data.color,
   },
 });
 ```

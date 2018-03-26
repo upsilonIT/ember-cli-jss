@@ -46,15 +46,7 @@
     ]
   },
   "dependencies": {
-    "broccoli-funnel": "^2.0.1",
-    "broccoli-merge-trees": "^3.0.0",
-    "broccoli-rollup": "^2.1.0",
-    "ember-cli-babel": "^6.6.0",
-    "jss": "^9.8.1",
-    "jss-preset-default": "^4.3.0",
-    "rollup-plugin-commonjs": "^9.1.0",
-    "rollup-plugin-node-resolve": "^3.3.0",
-    "rollup-plugin-replace": "^2.0.0"
+    "ember-cli-babel": "^6.6.0"
   },
   "devDependencies": {
     "@exeto/eslint-config": "^1.1.0",
