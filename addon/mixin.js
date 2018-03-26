@@ -10,25 +10,24 @@ const CLASS_NAMES = `${PREFIX}-classNames`;
 const CLASS_NAME_BINDINGS = `${PREFIX}-classNameBindings`;
 const SETUP = `${PREFIX}-setup`;
 
-const createBindings = (context) => {
-  const observedProperties = context.jssNameBindings
-    .map(items => items.split(':')[0]);
+const createBindings = context => {
+  const observedProperties = context.jssNameBindings.map(
+    items => items.split(':')[0],
+  );
 
   Ember.mixin(context, {
     [CLASS_NAME_BINDINGS]: computed('classes', ...observedProperties, () => {
       const classes = context.get('classes');
 
       return context.jssNameBindings
-        .map((item) => {
+        .map(item => {
           const items = item.split(':');
 
           if (items.length === 1) {
             return classes[context.get(items[0])];
           }
 
-          return context.get(items[0])
-            ? classes[items[1]]
-            : classes[items[2]];
+          return context.get(items[0]) ? classes[items[1]] : classes[items[2]];
         })
         .join(' ');
     }).readOnly(),
@@ -41,15 +40,10 @@ export default Mixin.create({
   jssObservedProps: [],
   classes: {},
 
-  classNameBindings: [
-    CLASS_NAMES,
-    CLASS_NAME_BINDINGS,
-  ],
+  classNameBindings: [CLASS_NAMES, CLASS_NAME_BINDINGS],
 
-  [CLASS_NAMES]: computed('classes', 'jssNames.[]', function () {
-    return this.jssNames
-      .map(name => this.get(`classes.${name}`))
-      .join(' ');
+  [CLASS_NAMES]: computed('classes', 'jssNames.[]', function() {
+    return this.jssNames.map(name => this.get(`classes.${name}`)).join(' ');
   }).readOnly(),
 
   init(...args) {
@@ -57,22 +51,22 @@ export default Mixin.create({
 
     assert(
       'Only instance of StyleSheet allowed for "stylesheet"',
-      this.get('stylesheet') instanceof StyleSheet
+      this.get('stylesheet') instanceof StyleSheet,
     );
 
     assert(
       'Only arrays are allowed for "jssNames"',
-      Array.isArray(this.jssNames)
+      Array.isArray(this.jssNames),
     );
 
     assert(
       'Only arrays are allowed for "jssObservedProps"',
-      Array.isArray(this.jssObservedProps)
+      Array.isArray(this.jssObservedProps),
     );
 
     assert(
       'Only arrays are allowed for "jssNameBindings"',
-      Array.isArray(this.jssNameBindings)
+      Array.isArray(this.jssNameBindings),
     );
 
     this[SETUP]();

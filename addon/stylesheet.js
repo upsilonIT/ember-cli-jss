@@ -25,10 +25,7 @@ export default class StyleSheet {
       options.meta = name;
     }
 
-    this.staticSheet = jssInstance.createStyleSheet(
-      this.styles,
-      options
-    );
+    this.staticSheet = jssInstance.createStyleSheet(this.styles, options);
   }
 
   attachStaticSheet() {
@@ -47,12 +44,12 @@ export default class StyleSheet {
 
     const dynamicStyles = compose(
       this.staticSheet,
-      getDynamicStyles(this.styles)
+      getDynamicStyles(this.styles),
     );
 
     const dynamicSheet = jssInstance.createStyleSheet(
       dynamicStyles,
-      dynamicOptions
+      dynamicOptions,
     );
 
     if (!isEmpty(dynamicSheet.classes)) {

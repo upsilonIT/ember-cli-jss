@@ -1,4 +1,4 @@
-/* eslint-env node */
+'use strict';
 
 const path = require('path');
 const Funnel = require('broccoli-funnel');
@@ -20,10 +20,10 @@ module.exports = {
   },
 
   treeForVendor(tree) {
-    const trees = ['jss', 'jss-preset-default'].map((item) => {
+    const trees = ['jss', 'jss-preset-default'].map(item => {
       const itemPath = path.dirname(require.resolve(`${item}/lib/index.js`));
       const itemTree = new Funnel(itemPath);
-      const { env } = (this.app || this.parent.app);
+      const { env } = this.app || this.parent.app;
 
       return new Rollup(itemTree, {
         rollup: {
@@ -53,7 +53,9 @@ module.exports = {
   },
 
   setupPreprocessorRegistry(type, registry) {
-    if (type !== 'parent') { return; }
+    if (type !== 'parent') {
+      return;
+    }
 
     registry.add('htmlbars-ast-plugin', {
       name: 'ember-cli-jss',
