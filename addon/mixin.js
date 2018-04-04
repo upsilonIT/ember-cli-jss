@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import Mixin from '@ember/object/mixin';
 import { assert } from '@ember/debug';
 import EmObject, { computed } from '@ember/object';
@@ -15,7 +14,7 @@ const createBindings = context => {
     items => items.split(':')[0],
   );
 
-  Ember.mixin(context, {
+  Mixin.create({
     [classNameBindingsKey]: computed('classes', ...observedProperties, () => {
       const classes = context.get('classes');
 
@@ -31,7 +30,7 @@ const createBindings = context => {
         })
         .join(' ');
     }).readOnly(),
-  });
+  }).apply(context);
 };
 
 export default Mixin.create({
