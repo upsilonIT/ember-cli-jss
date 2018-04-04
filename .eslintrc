@@ -1,3 +1,25 @@
 {
-  "extends": "@exeto"
+  "root": true,
+  "extends": ["plugin:ember/recommended", "@exeto", "prettier"],
+  "plugins": ["ember", "prettier"],
+  "rules": {
+    "prettier/prettier": "error",
+    "ember/avoid-leaking-state-in-ember-objects": "off"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.js"],
+      "excludedFiles": ["app/**", "addon/**", "tests/**"],
+      "parserOptions": {
+        "sourceType": "script"
+      },
+      "env": {
+        "node": true
+      },
+      "rules": {
+        "strict": ["error", "global"],
+        "no-console": "off"
+      }
+    }
+  ]
 }

@@ -19,11 +19,11 @@ When you update properties listed in the `jssObservedProps`, dynamic styles will
 ```js
 // ...awesome-component/component.js
 
-import Ember from 'ember';
+import Component from '@ember/component';
 import JSS from 'ember-cli-jss';
 import stylesheet from './stylesheet';
 
-export default Ember.Component.extend(JSS, {
+export default Component.extend(JSS, {
   stylesheet,
   jssNames: ['wrapper'],
   jssNameBindings: ['isShow:show'],
@@ -58,7 +58,7 @@ export default new StyleSheet({
   },
 
   content: {
-    color: data => data.color;
+    color: data => data.color,
   },
 });
 ```
@@ -87,16 +87,16 @@ export default new StyleSheet({
 
 Plugin [`jss-preset-default`](https://github.com/cssinjs/jss-preset-default) applied by default. Please note that the work of the dynamic properties depends on [`jss-compose`](https://github.com/cssinjs/jss-compose) plugin.
 
-You can override the `app/initializers/ember-cli-jss.js`. Use `setup`, it takes the same arguments as [`jss.setup`](http://cssinjs.org/js-api?v=v8.0.0#setup-jss-instance).
+You can override the `app/initializers/ember-cli-jss.js`.
 
 ```js
 // ...app/initializers/ember-cli-jss.js
 
-import { setup } from 'ember-cli-jss';
+import jss from 'jss';
 import preset from 'jss-preset-default';
 
 export function initialize() {
-  setup(preset());
+  jss.setup(preset());
 }
 
 export default {

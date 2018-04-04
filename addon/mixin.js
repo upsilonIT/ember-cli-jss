@@ -1,38 +1,36 @@
-import Ember from 'ember';
 import Mixin from '@ember/object/mixin';
 import { assert } from '@ember/debug';
 import EmObject, { computed } from '@ember/object';
+
 import StyleSheet from './stylesheet';
+import { uniqKey } from './utils';
 
-// Imitation private properties
-const PREFIX = `JSS-${Date.now()}`;
-const CLASS_NAMES = `${PREFIX}-classNames`;
-const CLASS_NAME_BINDINGS = `${PREFIX}-classNameBindings`;
-const SETUP = `${PREFIX}-setup`;
+const classNamesKey = uniqKey('classNames');
+const classNameBindingsKey = uniqKey('classNameBindings');
+const setupKey = uniqKey('setup');
 
-const createBindings = (context) => {
-  const observedProperties = context.jssNameBindings
-    .map(items => items.split(':')[0]);
+const createBindings = context => {
+  const observedProperties = context.jssNameBindings.map(
+    items => items.split(':')[0],
+  );
 
-  Ember.mixin(context, {
-    [CLASS_NAME_BINDINGS]: computed('classes', ...observedProperties, () => {
+  Mixin.create({
+    [classNameBindingsKey]: computed('classes', ...observedProperties, () => {
       const classes = context.get('classes');
 
       return context.jssNameBindings
-        .map((item) => {
+        .map(item => {
           const items = item.split(':');
 
           if (items.length === 1) {
             return classes[context.get(items[0])];
           }
 
-          return context.get(items[0])
-            ? classes[items[1]]
-            : classes[items[2]];
+          return context.get(items[0]) ? classes[items[1]] : classes[items[2]];
         })
         .join(' ');
     }).readOnly(),
-  });
+  }).apply(context);
 };
 
 export default Mixin.create({
@@ -41,15 +39,10 @@ export default Mixin.create({
   jssObservedProps: [],
   classes: {},
 
-  classNameBindings: [
-    CLASS_NAMES,
-    CLASS_NAME_BINDINGS,
-  ],
+  classNameBindings: [classNamesKey, classNameBindingsKey],
 
-  [CLASS_NAMES]: computed('classes', 'jssNames.[]', function () {
-    return this.jssNames
-      .map(name => this.get(`classes.${name}`))
-      .join(' ');
+  [classNamesKey]: computed('classes', 'jssNames.[]', function() {
+    return this.jssNames.map(name => this.get(`classes.${name}`)).join(' ');
   }).readOnly(),
 
   init(...args) {
@@ -57,28 +50,28 @@ export default Mixin.create({
 
     assert(
       'Only instance of StyleSheet allowed for "stylesheet"',
-      this.get('stylesheet') instanceof StyleSheet
+      this.get('stylesheet') instanceof StyleSheet,
     );
 
     assert(
       'Only arrays are allowed for "jssNames"',
-      Array.isArray(this.jssNames)
+      Array.isArray(this.jssNames),
     );
 
     assert(
       'Only arrays are allowed for "jssObservedProps"',
-      Array.isArray(this.jssObservedProps)
+      Array.isArray(this.jssObservedProps),
     );
 
     assert(
       'Only arrays are allowed for "jssNameBindings"',
-      Array.isArray(this.jssNameBindings)
+      Array.isArray(this.jssNameBindings),
     );
 
-    this[SETUP]();
+    this[setupKey]();
   },
 
-  [SETUP]() {
+  [setupKey]() {
     createBindings(this);
 
     const componentName = String(this).match(/:(.+?):/)[1];
@@ -100,7 +93,6 @@ export default Mixin.create({
 
   willDestroyElement(...args) {
     this._super(...args);
-
     this.stylesheet.detach(this.elementId);
   },
 });

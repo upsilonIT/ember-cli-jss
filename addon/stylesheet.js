@@ -1,10 +1,9 @@
 import { copy } from '@ember/object/internals';
 import { merge } from '@ember/polyfills';
-import { getDynamicStyles } from 'jss';
-import compose from './compose';
-import { jssInstance } from './setup';
+import jss, { getDynamicStyles } from 'jss';
 
-const isEmpty = (obj = {}) => !Object.keys(obj).length;
+import compose from './compose';
+import { isEmpty } from './utils';
 
 export default class StyleSheet {
   constructor(styles, options) {
@@ -25,10 +24,7 @@ export default class StyleSheet {
       options.meta = name;
     }
 
-    this.staticSheet = jssInstance.createStyleSheet(
-      this.styles,
-      options
-    );
+    this.staticSheet = jss.createStyleSheet(this.styles, options);
   }
 
   attachStaticSheet() {
@@ -38,22 +34,18 @@ export default class StyleSheet {
 
   createDynamicSheetAndAttach(id, name) {
     const dynamicOptions = copy(this.options);
-    const meta = dynamicOptions.meta || `${name} dynamic`;
 
     merge(dynamicOptions, {
-      meta,
+      meta: dynamicOptions.meta || `${name} dynamic`,
       link: true,
     });
 
     const dynamicStyles = compose(
       this.staticSheet,
-      getDynamicStyles(this.styles)
+      getDynamicStyles(this.styles),
     );
 
-    const dynamicSheet = jssInstance.createStyleSheet(
-      dynamicStyles,
-      dynamicOptions
-    );
+    const dynamicSheet = jss.createStyleSheet(dynamicStyles, dynamicOptions);
 
     if (!isEmpty(dynamicSheet.classes)) {
       dynamicSheet.attach();
@@ -91,7 +83,6 @@ export default class StyleSheet {
     }
 
     this.createDynamicSheetAndAttach(id, name);
-
     this.setupSheet(id);
   }
 
