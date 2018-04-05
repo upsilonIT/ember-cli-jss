@@ -15,7 +15,8 @@
     "app",
     "config/environment.js",
     "index.js",
-    "lib"
+    "lib",
+    "vendor"
   ],
   "keywords": [
     "ember-addon",
