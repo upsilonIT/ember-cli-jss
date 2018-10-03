@@ -7,8 +7,7 @@
   "repository": "exeto/ember-cli-jss",
   "scripts": {
     "start": "ember test --server",
-    "test": "ember try:each",
-    "precommit": "lint-staged"
+    "test": "ember try:each"
   },
   "files": [
     "addon",
