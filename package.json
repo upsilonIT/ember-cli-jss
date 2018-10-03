@@ -35,16 +35,6 @@
   "ember-addon": {
     "configPath": "tests/dummy/config"
   },
-  "lint-staged": {
-    "**/*.js": [
-      "eslint --fix",
-      "git add"
-    ],
-    "**/*.{json,md}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
   "dependencies": {
     "ember-cli-babel": "7.1.2"
   },
@@ -69,7 +59,7 @@
     "eslint-plugin-ember": "5.2.0",
     "eslint-plugin-prettier": "^3.0.0",
     "husky": "^1.1.0",
-    "lint-staged": "^7.0.0",
+    "lint-staged": "^7.3.0",
     "loader.js": "^4.2.3",
     "prettier": "^1.14.2"
   }
