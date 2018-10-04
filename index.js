@@ -6,8 +6,16 @@ module.exports = {
   name: 'ember-cli-jss',
 
   included(app) {
-    app.import('vendor/jss.min.js');
-    app.import('vendor/jss-preset-default.min.js');
+    app.import('node_modules/jss/dist/jss.min.js', {
+      using: [{ transformation: 'amd', as: 'jss' }],
+    });
+
+    app.import(
+      'node_modules/jss-preset-default/dist/jss-preset-default.min.js',
+      {
+        using: [{ transformation: 'amd', as: 'jss-preset-default' }],
+      },
+    );
   },
 
   setupPreprocessorRegistry(type, registry) {
