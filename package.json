@@ -36,7 +36,9 @@
     "configPath": "tests/dummy/config"
   },
   "dependencies": {
-    "ember-cli-babel": "7.1.2"
+    "ember-cli-babel": "7.1.2",
+    "jss": "^9.8.7",
+    "jss-preset-default": "^4.5.0"
   },
   "devDependencies": {
     "@exeto/eslint-config": "^2.0.0",
