@@ -3,7 +3,7 @@ import { assert } from '@ember/debug';
 import EmObject, { computed } from '@ember/object';
 
 import StyleSheet from './stylesheet';
-import { uniqKey } from './utils';
+import { uniqKey, isBool } from './utils';
 
 const classNamesKey = uniqKey('classNames');
 const classNameBindingsKey = uniqKey('classNameBindings');
@@ -21,12 +21,16 @@ const createBindings = context => {
       return context.jssNameBindings
         .map(item => {
           const items = item.split(':');
+          const [key, truthy, falsy] = items;
+          const value = context.get(key);
 
           if (items.length === 1) {
-            return classes[context.get(items[0])];
+            const targetName = isBool(value) ? key : value;
+
+            return classes[targetName];
           }
 
-          return context.get(items[0]) ? classes[items[1]] : classes[items[2]];
+          return value ? classes[truthy] : classes[falsy];
         })
         .join(' ');
     }).readOnly(),

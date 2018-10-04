@@ -25,6 +25,7 @@ module('Unit | Mixin | JSS', hooks => {
       ['content', 'jss--content jss--content'],
       ['wrapper', 'jss--wrapper jss--wrapper'],
       ['show', 'jss--show jss--show'],
+      ['isBlue', 'jss--isBlue jss--isBlue'],
     ]);
   });
 
@@ -39,7 +40,7 @@ module('Unit | Mixin | JSS', hooks => {
 
     assert.deepEqual(values, [
       'jss--wrapper jss--wrapper',
-      'jss--show jss--show',
+      'jss--show jss--show jss--isBlue jss--isBlue',
     ]);
   });
 });
