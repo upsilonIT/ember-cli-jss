@@ -6,3 +6,5 @@ const random = () =>
 export const uniqKey = name => `__${name}__${random()}`;
 
 export const isEmpty = (obj = {}) => !Object.keys(obj).length;
+
+export const isBool = value => typeof value === 'boolean';

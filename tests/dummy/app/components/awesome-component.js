@@ -14,20 +14,26 @@ const stylesheet = new StyleSheet({
   content: {
     color: data => data.color,
   },
+
+  isBlue: {
+    border: [1, 'solid', 'blue'],
+  },
 });
 
 export default Component.extend(JSS, {
   stylesheet,
   jssNames: ['wrapper'],
-  jssNameBindings: ['isShow:show'],
+  jssNameBindings: ['isShow:show', 'isBlue'],
   jssObservedProps: ['color'],
 
   color: 'blue',
   isShow: true,
+  isBlue: true,
 
   actions: {
     changeColor(color) {
       this.set('color', color);
+      this.set('isBlue', false);
     },
   },
 });
