@@ -1,3 +1,7 @@
+# 2.0.1 / 2018-10-04
+
+- Move `ember-copy` to dependencies
+
 # 2.0.0 / 2018-10-04
 
 - Use npm packages for jss and jss-preset-default
