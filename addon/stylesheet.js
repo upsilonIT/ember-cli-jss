@@ -77,11 +77,7 @@ export default class StyleSheet {
 
   attach(id, name) {
     this.createStaticSheet(name);
-
-    if (!isEmpty(this.staticSheet.classes)) {
-      this.attachStaticSheet();
-    }
-
+    this.attachStaticSheet();
     this.createDynamicSheetAndAttach(id, name);
     this.setupSheet(id);
   }
