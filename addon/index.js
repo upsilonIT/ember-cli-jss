@@ -1,5 +1,6 @@
-import Mixin from './mixin';
+import { JSS, TaglessJSS } from './mixin';
 import StyleSheet from './stylesheet';
 
-export default Mixin;
-export { StyleSheet };
+export default JSS;
+
+export { StyleSheet, TaglessJSS };
