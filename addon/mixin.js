@@ -37,12 +37,9 @@ const createBindings = context => {
   }).apply(context);
 };
 
-export default Mixin.create({
+const ClassesBindings = Mixin.create({
   jssNames: [],
   jssNameBindings: [],
-  jssObservedProps: [],
-  classes: {},
-
   classNameBindings: [classNamesKey, classNameBindingsKey],
 
   [classNamesKey]: computed('classes', 'jssNames.[]', function() {
@@ -53,18 +50,8 @@ export default Mixin.create({
     this._super(...args);
 
     assert(
-      'Only instance of StyleSheet allowed for "stylesheet"',
-      this.get('stylesheet') instanceof StyleSheet,
-    );
-
-    assert(
       'Only arrays are allowed for "jssNames"',
       Array.isArray(this.jssNames),
-    );
-
-    assert(
-      'Only arrays are allowed for "jssObservedProps"',
-      Array.isArray(this.jssObservedProps),
     );
 
     assert(
@@ -72,12 +59,31 @@ export default Mixin.create({
       Array.isArray(this.jssNameBindings),
     );
 
+    createBindings(this);
+  },
+});
+
+export const TaglessJSS = Mixin.create({
+  jssObservedProps: [],
+  classes: EmObject.create(),
+
+  init(...args) {
+    this._super(...args);
+
+    assert(
+      'Only instance of StyleSheet allowed for "stylesheet"',
+      this.get('stylesheet') instanceof StyleSheet,
+    );
+
+    assert(
+      'Only arrays are allowed for "jssObservedProps"',
+      Array.isArray(this.jssObservedProps),
+    );
+
     this[setupKey]();
   },
 
   [setupKey]() {
-    createBindings(this);
-
     const componentName = String(this).match(/:(.+?):/)[1];
     const id = this.elementId;
 
@@ -100,3 +106,5 @@ export default Mixin.create({
     this.stylesheet.detach(this.elementId);
   },
 });
+
+export const JSS = Mixin.create(ClassesBindings, TaglessJSS);

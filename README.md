@@ -38,6 +38,20 @@ export default Component.extend(JSS, {
     },
   },
 });
+
+// For tag-less component use TaglessJSS
+export default Component.extend(TaglessJSS, {
+  stylesheet,
+  jssObservedProps: ['color'],
+  tagName: '',
+  color: 'blue',
+
+  actions: {
+    changeColor(color) {
+      this.set('color', color);
+    },
+  },
+});
 ```
 
 Constructor `StyleSheet` accepts the same arguments as [`jss.createStyleSheet`](http://cssinjs.org/js-api?v=v8.0.0#create-style-sheet).
