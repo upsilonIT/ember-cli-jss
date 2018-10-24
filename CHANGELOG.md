@@ -1,3 +1,8 @@
+# 2.1.0 / 2018-10-24
+
+- Always attach static styles ([#102](https://github.com/exeto/ember-cli-jss/issues/102))
+- Add support for tag-less components ([#103](https://github.com/exeto/ember-cli-jss/issues/103))
+
 # 2.0.1 / 2018-10-04
 
 - Move `ember-copy` to dependencies
