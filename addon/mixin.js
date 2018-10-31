@@ -3,7 +3,7 @@ import { assert } from '@ember/debug';
 import EmObject, { computed } from '@ember/object';
 
 import StyleSheet from './stylesheet';
-import { uniqKey, isBool } from './utils';
+import { uniqKey, isBool, getId, getComponentName } from './utils';
 
 const classNamesKey = uniqKey('classNames');
 const classNameBindingsKey = uniqKey('classNameBindings');
@@ -84,8 +84,8 @@ export const TaglessJSS = Mixin.create({
   },
 
   [setupKey]() {
-    const componentName = String(this).match(/:(.+?):/)[1];
-    const id = this.elementId;
+    const componentName = getComponentName(this);
+    const id = getId(this);
 
     this.stylesheet.attach(id, componentName);
 
@@ -103,7 +103,7 @@ export const TaglessJSS = Mixin.create({
 
   willDestroyElement(...args) {
     this._super(...args);
-    this.stylesheet.detach(this.elementId);
+    this.stylesheet.detach(getId(this));
   },
 });
 
