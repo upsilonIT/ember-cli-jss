@@ -1,3 +1,7 @@
+# 2.1.1 / 2018-10-31
+
+- Fix detaching stylesheet ([#107](https://github.com/exeto/ember-cli-jss/issues/107))
+
 # 2.1.0 / 2018-10-24
 
 - Always attach static styles ([#102](https://github.com/exeto/ember-cli-jss/issues/102))
