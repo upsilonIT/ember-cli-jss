@@ -20,7 +20,7 @@ When you update properties listed in the `jssObservedProps`, dynamic styles will
 // ...awesome-component/component.js
 
 import Component from '@ember/component';
-import JSS from 'ember-cli-jss';
+import JSS, { TaglessJSS } from 'ember-cli-jss';
 import stylesheet from './stylesheet';
 
 export default Component.extend(JSS, {
