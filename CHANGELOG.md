@@ -1,3 +1,11 @@
+# 2.1.3 / 2018-11-13
+
+- Change subexpression for path
+
+# 2.1.2 / 2018-11-12
+
+- Fix function rules ([#111](https://github.com/exeto/ember-cli-jss/issues/111))
+
 # 2.1.1 / 2018-10-31
 
 - Fix detaching stylesheet ([#107](https://github.com/exeto/ember-cli-jss/issues/107))
