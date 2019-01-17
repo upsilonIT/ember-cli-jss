@@ -1,3 +1,7 @@
+# 2.1.4 / 2019-01-17
+
+- Fix `ember-polyfills.deprecate-merge`
+
 # 2.1.3 / 2018-11-13
 
 - Change subexpression for path
