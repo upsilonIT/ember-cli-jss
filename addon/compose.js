@@ -1,6 +1,6 @@
 /* eslint-disable guard-for-in, no-restricted-syntax */
 
-import { merge } from '@ember/polyfills';
+import { assign } from '@ember/polyfills';
 
 export default (staticSheet, styles) => {
   for (const name in styles) {
@@ -10,7 +10,7 @@ export default (staticSheet, styles) => {
       break;
     }
 
-    merge(styles[name], { composes: className });
+    assign(styles[name], { composes: className });
   }
 
   if (styles) {

@@ -1,5 +1,5 @@
 import { copy } from 'ember-copy';
-import { merge } from '@ember/polyfills';
+import { assign } from '@ember/polyfills';
 import jss, { getDynamicStyles } from 'jss';
 
 import compose from './compose';
@@ -35,7 +35,7 @@ export default class StyleSheet {
   createDynamicSheetAndAttach(id, name) {
     const dynamicOptions = copy(this.options);
 
-    merge(dynamicOptions, {
+    assign(dynamicOptions, {
       meta: dynamicOptions.meta || `${name} dynamic`,
       link: true,
     });
