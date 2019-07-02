@@ -1,3 +1,7 @@
+# 3.0.0-alpha.2 / 2019-06-02
+
+- Optimize the updating of dynamic styles
+
 # 3.0.0-alpha.1 / 2019-06-02
 
 - Update `jss` and `jss-preset-default` to version `10.0.0-alpha.21`
