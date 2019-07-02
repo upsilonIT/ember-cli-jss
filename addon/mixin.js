@@ -1,6 +1,7 @@
 import Mixin from '@ember/object/mixin';
 import { assert } from '@ember/debug';
 import EmObject, { computed } from '@ember/object';
+import { once } from '@ember/runloop';
 
 import StyleSheet from './stylesheet';
 import { uniqKey, isBool, getId, getComponentName } from './utils';
@@ -93,12 +94,13 @@ export const TaglessJSS = Mixin.create({
     const sheet = this.stylesheet.dynamicSheets[id];
     const fields = this.get('jssObservedProps') || [];
     const update = () => sheet.update(this.getProperties(fields));
+    const onceUpdate = () => once(update);
 
     this.set('classes', classes);
 
     update();
 
-    fields.forEach(field => this.addObserver(field, this, update));
+    fields.forEach(field => this.addObserver(field, this, onceUpdate));
   },
 
   willDestroyElement(...args) {
