@@ -11,5 +11,5 @@ start();
 
 jss.setup({
   plugins: preset().plugins,
-  createGenerateClassName: () => rule => `jss--${rule.key}`,
+  createGenerateId: () => rule => `jss--${rule.key}`,
 });
