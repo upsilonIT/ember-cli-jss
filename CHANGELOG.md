@@ -1,3 +1,9 @@
+# 3.0.0-alpha.1 / 2019-06-02
+
+- Update `jss` and `jss-preset-default` to version `10.0.0-alpha.21`
+- Update `jss-preset-default` to version `10.0.0-alpha.21`
+- Use `ember-auto-import` instead of import from node_modules
+
 # 2.1.4 / 2019-01-17
 
 - Fix `ember-polyfills.deprecate-merge`
