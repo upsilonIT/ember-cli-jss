@@ -1,6 +1,6 @@
 import Mixin from '@ember/object/mixin';
 import { assert } from '@ember/debug';
-import EmObject, { computed } from '@ember/object';
+import { computed } from '@ember/object';
 import { once } from '@ember/runloop';
 
 import StyleSheet from './stylesheet';
@@ -66,7 +66,16 @@ const ClassesBindings = Mixin.create({
 
 export const TaglessJSS = Mixin.create({
   jssObservedProps: [],
-  classes: EmObject.create(),
+
+  classes: computed({
+    get() {
+      return {};
+    },
+
+    set(_, value) {
+      return value;
+    },
+  }),
 
   init(...args) {
     this._super(...args);
@@ -87,11 +96,8 @@ export const TaglessJSS = Mixin.create({
   [setupKey]() {
     const componentName = getComponentName(this);
     const id = getId(this);
-
-    this.stylesheet.attach(id, componentName);
-
-    const classes = EmObject.create(this.stylesheet.sheet.classes);
-    const sheet = this.stylesheet.dynamicSheets[id];
+    const classes = this.stylesheet.attach(id, componentName);
+    const sheet = this.stylesheet.getDynamicSheet(id);
     const fields = this.get('jssObservedProps') || [];
     const update = () => sheet.update(this.getProperties(fields));
     const onceUpdate = () => once(update);

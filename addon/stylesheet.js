@@ -3,7 +3,7 @@ import { assign } from '@ember/polyfills';
 import jss, { getDynamicStyles } from 'jss';
 
 import compose from './compose';
-import { isEmpty } from './utils';
+import { isEmpty, mergeClasses } from './utils';
 
 export default class StyleSheet {
   constructor(styles, options) {
@@ -11,6 +11,10 @@ export default class StyleSheet {
     this.dynamicSheets = {};
     this.styles = styles;
     this.options = options || {};
+  }
+
+  getDynamicSheet(id) {
+    return this.dynamicSheets[id];
   }
 
   createStaticSheet(name) {
@@ -80,6 +84,8 @@ export default class StyleSheet {
     this.attachStaticSheet();
     this.createDynamicSheetAndAttach(id, name);
     this.setupSheet(id);
+
+    return mergeClasses(this.sheet.classes, this.getDynamicSheet(id).classes);
   }
 
   detach(id) {
