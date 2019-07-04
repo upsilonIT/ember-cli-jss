@@ -1,3 +1,8 @@
+# 3.0.0-alpha.3 / 2019-06-04
+
+- Added a named export for JSS
+- Merge dynamic and static classes
+
 # 3.0.0-alpha.2 / 2019-06-02
 
 - Optimize the updating of dynamic styles
