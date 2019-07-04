@@ -22,10 +22,10 @@ module('Unit | Mixin | JSS', hooks => {
     const classes = Object.entries(component.get('classes'));
 
     assert.deepEqual(classes, [
-      ['content', 'jss--content jss--content'],
-      ['wrapper', 'jss--wrapper jss--wrapper'],
-      ['show', 'jss--show jss--show'],
-      ['isBlue', 'jss--isBlue jss--isBlue'],
+      ['content', 'jss--content'],
+      ['wrapper', 'jss--wrapper'],
+      ['show', 'jss--show'],
+      ['isBlue', 'jss--isBlue'],
     ]);
   });
 
@@ -38,9 +38,6 @@ module('Unit | Mixin | JSS', hooks => {
       .get('classNameBindings')
       .map(key => component.get(key));
 
-    assert.deepEqual(values, [
-      'jss--wrapper jss--wrapper',
-      'jss--show jss--show jss--isBlue jss--isBlue',
-    ]);
+    assert.deepEqual(values, ['jss--wrapper', 'jss--show jss--isBlue']);
   });
 });
