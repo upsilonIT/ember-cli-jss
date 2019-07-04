@@ -3,4 +3,4 @@ import StyleSheet from './stylesheet';
 
 export default JSS;
 
-export { StyleSheet, TaglessJSS };
+export { StyleSheet, JSS, TaglessJSS };
