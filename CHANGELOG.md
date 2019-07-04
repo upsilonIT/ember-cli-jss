@@ -1,3 +1,7 @@
+# 3.0.0-alpha.5 / 2019-06-04
+
+- Fixed merging classes
+
 # 3.0.0-alpha.4 / 2019-06-04
 
 - Without changes
