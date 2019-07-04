@@ -71,21 +71,15 @@ export default class StyleSheet {
     delete this.dynamicSheets[id];
   }
 
-  setupSheet(id) {
-    const dynamicSheet = this.dynamicSheets[id];
-
-    this.sheet = isEmpty(dynamicSheet.classes)
-      ? this.staticSheet
-      : dynamicSheet;
-  }
-
   attach(id, name) {
     this.createStaticSheet(name);
     this.attachStaticSheet();
     this.createDynamicSheetAndAttach(id, name);
-    this.setupSheet(id);
 
-    return mergeClasses(this.sheet.classes, this.getDynamicSheet(id).classes);
+    return mergeClasses(
+      this.staticSheet.classes,
+      this.getDynamicSheet(id).classes,
+    );
   }
 
   detach(id) {

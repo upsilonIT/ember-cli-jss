@@ -22,9 +22,9 @@ module('Unit | Mixin | JSS', hooks => {
     const classes = Object.entries(component.get('classes'));
 
     assert.deepEqual(classes, [
-      ['content', 'jss--content'],
       ['wrapper', 'jss--wrapper'],
       ['show', 'jss--show'],
+      ['content', 'jss--content'],
       ['isBlue', 'jss--isBlue'],
     ]);
   });
