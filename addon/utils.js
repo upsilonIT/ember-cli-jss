@@ -9,8 +9,6 @@ export const isEmpty = (obj = {}) => !Object.keys(obj).length;
 
 export const isBool = value => typeof value === 'boolean';
 
-export const getId = ctx => String(ctx).match(/:(\w+)>$/)[1];
-
 export const getComponentName = ctx => String(ctx).match(/:(.+?):/)[1];
 
 const uniq = items =>

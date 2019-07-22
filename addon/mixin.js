@@ -2,9 +2,10 @@ import Mixin from '@ember/object/mixin';
 import { assert } from '@ember/debug';
 import { computed } from '@ember/object';
 import { once } from '@ember/runloop';
+import { guidFor } from '@ember/object/internals';
 
 import StyleSheet from './stylesheet';
-import { uniqKey, isBool, getId, getComponentName } from './utils';
+import { uniqKey, isBool, getComponentName } from './utils';
 
 const classNamesKey = uniqKey('classNames');
 const classNameBindingsKey = uniqKey('classNameBindings');
@@ -95,7 +96,7 @@ export const TaglessJSS = Mixin.create({
 
   [setupKey]() {
     const componentName = getComponentName(this);
-    const id = getId(this);
+    const id = guidFor(this);
     const classes = this.stylesheet.attach(id, componentName);
     const sheet = this.stylesheet.getDynamicSheet(id);
     const fields = this.get('jssObservedProps') || [];
@@ -111,7 +112,7 @@ export const TaglessJSS = Mixin.create({
 
   willDestroyElement(...args) {
     this._super(...args);
-    this.stylesheet.detach(getId(this));
+    this.stylesheet.detach(guidFor(this));
   },
 });
 
