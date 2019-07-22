@@ -1,3 +1,7 @@
+# 3.0.0-alpha.6 / 2019-07-22
+
+- Use `guidFor` for getting `id`
+
 # 3.0.0-alpha.5 / 2019-06-04
 
 - Fixed merging classes
