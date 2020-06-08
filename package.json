@@ -39,7 +39,7 @@
     "ember-assign-polyfill": "^2.6.0",
     "ember-cli-babel": "7.20.4",
     "ember-copy": "^1.0.0",
-    "jss": "^9.8.7",
+    "jss": "^10.2.0",
     "jss-preset-default": "^10.0.3"
   },
   "devDependencies": {
