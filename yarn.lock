@@ -3592,7 +3592,7 @@ ember-cli-babel-plugin-helpers@^1.0.0, ember-cli-babel-plugin-helpers@^1.1.0:
   resolved "https://registry.yarnpkg.com/ember-cli-babel-plugin-helpers/-/ember-cli-babel-plugin-helpers-1.1.0.tgz#de3baedd093163b6c2461f95964888c1676325ac"
   integrity sha512-Zr4my8Xn+CzO0gIuFNXji0eTRml5AxZUTDQz/wsNJ5AJAtyFWCY4QtKdoELNNbiCVGt1lq5yLiwTm4scGKu6xA==
 
-ember-cli-babel@7.22.1, ember-cli-babel@^7.0.0, ember-cli-babel@^7.11.0, ember-cli-babel@^7.19.0, ember-cli-babel@^7.20.5, ember-cli-babel@^7.22.1:
+ember-cli-babel@7.22.1, ember-cli-babel@^7.11.0, ember-cli-babel@^7.19.0, ember-cli-babel@^7.20.5, ember-cli-babel@^7.22.1:
   version "7.22.1"
   resolved "https://registry.yarnpkg.com/ember-cli-babel/-/ember-cli-babel-7.22.1.tgz#cad28b89cf0e184c93b863d09bc5ba4ce1d2e453"
   integrity sha512-kCT8WbC1AYFtyOpU23ESm22a+gL6fWv8Nzwe8QFQ5u0piJzM9MEudfbjADEaoyKTrjMQTDsrWwEf3yjggDsOng==
@@ -3913,11 +3913,11 @@ ember-cli@~3.21.0:
     yam "^1.0.0"
 
 ember-copy@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/ember-copy/-/ember-copy-2.0.0.tgz#919f7ca7be16d1194aab88401fb14b54fca77a34"
-  integrity sha512-w5NlpXQnZZKbG5nE1hNOq6m29sEPjBEVaDUUkiy5XNq//idcqcBZMLorRq20VRprw+46ToywFjDNsiypCxp1UA==
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/ember-copy/-/ember-copy-2.0.1.tgz#13192b12a250324bb4a8b4547a680b113f4e3041"
+  integrity sha512-N/XFvZszrzyyX4IcNoeK4mJvIItNuONumhPLqi64T8NDjJkxBj4Pq61rvMkJx/9eZ8alzE4I8vYKOLxT0FvRuQ==
   dependencies:
-    ember-cli-babel "^7.0.0"
+    ember-cli-babel "^7.22.1"
 
 ember-disable-prototype-extensions@^1.1.2:
   version "1.1.3"
