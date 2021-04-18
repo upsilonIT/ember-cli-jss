@@ -8,16 +8,16 @@
 
 # 2.1.2 / 2018-11-12
 
-- Fix function rules ([#111](https://github.com/exeto/ember-cli-jss/issues/111))
+- Fix function rules ([#111](https://github.com/upsilonIT/ember-cli-jss/issues/111))
 
 # 2.1.1 / 2018-10-31
 
-- Fix detaching stylesheet ([#107](https://github.com/exeto/ember-cli-jss/issues/107))
+- Fix detaching stylesheet ([#107](https://github.com/upsilonIT/ember-cli-jss/issues/107))
 
 # 2.1.0 / 2018-10-24
 
-- Always attach static styles ([#102](https://github.com/exeto/ember-cli-jss/issues/102))
-- Add support for tag-less components ([#103](https://github.com/exeto/ember-cli-jss/issues/103))
+- Always attach static styles ([#102](https://github.com/upsilonIT/ember-cli-jss/issues/102))
+- Add support for tag-less components ([#103](https://github.com/upsilonIT/ember-cli-jss/issues/103))
 
 # 2.0.1 / 2018-10-04
 
@@ -26,8 +26,8 @@
 # 2.0.0 / 2018-10-04
 
 - Use npm packages for jss and jss-preset-default
-- Fix jssNameBindings ([#91](https://github.com/exeto/ember-cli-jss/issues/91))
-- Fix copy deprecation ([#95](https://github.com/exeto/ember-cli-jss/issues/95))
+- Fix jssNameBindings ([#91](https://github.com/upsilonIT/ember-cli-jss/issues/91))
+- Fix copy deprecation ([#95](https://github.com/upsilonIT/ember-cli-jss/issues/95))
 
 # 1.0.1 / 2018-04-05
 

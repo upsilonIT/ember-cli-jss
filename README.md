@@ -72,7 +72,7 @@ export default new StyleSheet({
   },
 
   content: {
-    color: data => data.color,
+    color: (data) => data.color,
   },
 });
 ```
@@ -121,7 +121,7 @@ export default {
 
 ## License
 
-[MIT](LICENSE.md) © [Timofey Dergachev](https://exeto.me/)
+[MIT](LICENSE.md)
 
-[buildstat-url]: https://travis-ci.org/exeto/ember-cli-jss?branch=master
-[buildstat-image]: https://img.shields.io/travis/exeto/ember-cli-jss/master.svg?style=flat-square
+[buildstat-url]: https://travis-ci.org/upsilonIT/ember-cli-jss?branch=master
+[buildstat-image]: https://img.shields.io/travis/upsilonIT/ember-cli-jss/master.svg?style=flat-square

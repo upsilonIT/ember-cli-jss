@@ -3,8 +3,8 @@
   "version": "2.1.4",
   "description": "JSS integration for Ember",
   "license": "MIT",
-  "author": "Timofey Dergachev <t@exeto.me> (https://exeto.me/)",
-  "repository": "exeto/ember-cli-jss",
+  "author": "Timofey Dergachev <tim@exeto.me> (https://exeto.me/)",
+  "repository": "upsilonIT/ember-cli-jss",
   "scripts": {
     "start": "ember test --server",
     "test": "ember try:each"
