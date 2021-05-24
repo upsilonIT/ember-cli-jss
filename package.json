@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "ember-assign-polyfill": "^2.6.0",
-    "ember-cli-babel": "7.23.1",
+    "ember-cli-babel": "7.26.6",
     "ember-copy": "^2.0.0",
     "jss": "^10.5.0",
     "jss-preset-default": "^10.0.3"
